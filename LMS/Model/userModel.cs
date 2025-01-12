@@ -1,6 +1,5 @@
 ﻿namespace LMS.Model
 {
-
     internal class userModel
     {
         public string username { get; set; }

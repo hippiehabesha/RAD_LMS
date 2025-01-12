@@ -2,7 +2,6 @@
 using LMS.Model;
 using Microsoft.Data.SqlClient;
 using System.Data;
-using System.Runtime.Intrinsics.Arm;
 using System.Windows;
 
 
@@ -10,6 +9,7 @@ namespace LMS.DataBase
 {
     internal class UserConnection
     {
+        private string querySearch = "SELECT Username, Role FROM Users WHERE UserID = @userID";
         private string queryChangePassword = "UPDATE Users SET PasswordHash = @passwordHash WHERE UserID = @UserID";
         private string queryUpdate = "UPDATE Users SET Username = @Username , Role = @Role WHERE UserID = @UserID";
         private string querySave = "INSERT INTO Users(Username, PasswordHash, Role) Values(@userName, @passwordHash, @role)";
@@ -31,7 +31,7 @@ namespace LMS.DataBase
                     cmd.Parameters.AddWithValue("@Username", user.username);
                     int count = (int)cmd.ExecuteScalar();
 
-                    return count == 0; 
+                    return count == 0;
                 }
             }
         }
@@ -204,7 +204,6 @@ namespace LMS.DataBase
         }
         public userUpdateModel searchUser(int userID)
         {
-            string querySearch = "SELECT Username, Role FROM Users WHERE UserID = @userID";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -232,7 +231,7 @@ namespace LMS.DataBase
                 }
             }
         }
-     
+
 
     }
 }
