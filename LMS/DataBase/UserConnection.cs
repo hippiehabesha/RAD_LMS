@@ -11,7 +11,7 @@ namespace LMS.DataBase
     internal class UserConnection
     {
         private string queryChangePassword = "UPDATE Users SET PasswordHash = @passwordHash WHERE UserID = @UserID";
-        private string queryUpdate = "UPDATE Users SET Username = @Username ,PasswordHash = @passwordHash, Role = @Role WHERE UserID = @UserID";
+        private string queryUpdate = "UPDATE Users SET Username = @Username , Role = @Role WHERE UserID = @UserID";
         private string querySave = "INSERT INTO Users(Username, PasswordHash, Role) Values(@userName, @passwordHash, @role)";
         private string queryView = "SELECT UserID, Username, Role FROM Users";
         private string queryUniqueness = "SELECT COUNT(*) FROM Users WHERE Username = @Username";
@@ -162,11 +162,8 @@ namespace LMS.DataBase
                 connection.Open();
                 using (SqlCommand cmd = new SqlCommand(queryUpdate, connection))
                 {
-                    userModel user = new userModel { username = update.username, password = update.password, role = update.role };
-
                     cmd.Parameters.AddWithValue("@UserID", update.userId);
                     cmd.Parameters.AddWithValue("@Username", update.username);
-                    cmd.Parameters.AddWithValue("@passwordHash", passwordEncryption.HashPassword(user));
                     cmd.Parameters.AddWithValue("@Role", update.role);
 
                     int rowsAffected = cmd.ExecuteNonQuery();
