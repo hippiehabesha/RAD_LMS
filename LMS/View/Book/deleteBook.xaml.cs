@@ -1,4 +1,7 @@
-﻿using System;
+﻿using LMS.DataBase;
+using LMS.Model;
+using LMS.View.Admin;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +22,38 @@ namespace LMS.View.Book
     /// </summary>
     public partial class deleteBook : Window
     {
-        public deleteBook()
+        private Window _previousWindow;
+        public deleteBook(Window previousWindow)
         {
             InitializeComponent();
+            _previousWindow = previousWindow;
+        }
+
+        private void Delete_Book_Button(object sender, RoutedEventArgs e)
+        {
+            bookModel bookModel = new bookModel
+            {
+                bookID = int.Parse(txtBookID.Text)
+            };
+
+            new bookConnection().DeleteBook(bookModel);
+        }
+        private void Back_button(object sender, RoutedEventArgs e)
+        {
+            if (_previousWindow is adminView)
+            {
+                Window gotoAdminView = new adminView();
+                gotoAdminView.Show();
+                this.Close();
+            }
+
+            if (_previousWindow is viewLibrarian)
+            {
+                Window gotoViewLibrarian = new viewLibrarian();
+                gotoViewLibrarian.Show();
+                this.Close();
+            }
+
         }
     }
 }

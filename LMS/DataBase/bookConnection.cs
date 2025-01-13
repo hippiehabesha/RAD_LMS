@@ -6,6 +6,7 @@ namespace LMS.DataBase
 {
     internal class bookConnection
     {
+        private string queryCheck = "SELECT COUNT(1) FROM dbo.Books WHERE ISBN = @ISBN";
         private string querySearch = "SELECT BookID, Title, Author, Genre, ISBN, Availability FROM Books WHERE BookID = @BookID";
         private string queryAvailabilityUpdate = "UPDATE Books SET Availability = Availability + @Change WHERE BookID = @BookID";
         private string queryView = "SELECT BookID, Title, Author, Genre, ISBN, Availability FROM Books";
@@ -16,11 +17,24 @@ namespace LMS.DataBase
 
         public void AddBook(bookModel add)
         {
-
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
 
+                // Check if the book already exists
+                
+                using (SqlCommand checkCmd = new SqlCommand(queryCheck, connection))
+                {
+                    checkCmd.Parameters.AddWithValue("@ISBN", add.isbn);
+                    int count = (int)checkCmd.ExecuteScalar();
+                    if (count > 0)
+                    {
+                        MessageBox.Show("Book with this ISBN already exists.");
+                        return;
+                    }
+                }
+
+                // Insert the new book
                 using (SqlCommand cmd = new SqlCommand(queryAdd, connection))
                 {
                     cmd.Parameters.AddWithValue("@Title", add.title);
@@ -30,7 +44,7 @@ namespace LMS.DataBase
                     cmd.Parameters.AddWithValue("@Availability", add.availability);
 
                     cmd.ExecuteNonQuery();
-                    Console.WriteLine("Book added successfully.");
+                    MessageBox.Show("Book added successfully.");
                 }
             }
         }
@@ -52,11 +66,11 @@ namespace LMS.DataBase
                     int rowsAffected = cmd.ExecuteNonQuery();
                     if (rowsAffected > 0)
                     {
-                        Console.WriteLine("Book details updated successfully.");
+                        MessageBox.Show("Book details updated successfully.");
                     }
                     else
                     {
-                        Console.WriteLine("Book not found.");
+                        MessageBox.Show("Book not found.");
                     }
                 }
             }
@@ -74,11 +88,11 @@ namespace LMS.DataBase
                     int rowsAffected = cmd.ExecuteNonQuery();
                     if (rowsAffected > 0)
                     {
-                        Console.WriteLine("Book deleted successfully.");
+                        MessageBox.Show("Book deleted successfully.");
                     }
                     else
                     {
-                        Console.WriteLine("Book not found.");
+                        MessageBox.Show("Book not found.");
                     }
                 }
             }
@@ -113,7 +127,7 @@ namespace LMS.DataBase
                     cmd.Parameters.AddWithValue("@Change", availabilityUpdate.change);
 
                     cmd.ExecuteNonQuery();
-                    Console.WriteLine("Book availability updated.");
+                    MessageBox.Show("Book availability updated.");
                 }
             }
         }

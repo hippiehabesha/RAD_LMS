@@ -32,7 +32,7 @@ namespace LMS.View.User.Admin
             Window adminView = Application.Current.Windows.OfType<Window>().FirstOrDefault(w => w.Title == "Admin");
             if (adminView != null)
             {
-                Window gotoAddBook = new addBook();
+                Window gotoAddBook = new addBook(adminView);
                 gotoAddBook.Show();
                 adminView.Close();
             }
@@ -43,7 +43,7 @@ namespace LMS.View.User.Admin
             Window adminView = Application.Current.Windows.OfType<Window>().FirstOrDefault(w => w.Title == "Admin");
             if (adminView != null)
             {
-                Window gotoDeleteBook = new deleteBook();
+                Window gotoDeleteBook = new deleteBook(adminView);
                 gotoDeleteBook.Show();
                 adminView.Close();
             }

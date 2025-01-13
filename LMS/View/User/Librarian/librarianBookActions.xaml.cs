@@ -17,7 +17,7 @@ namespace LMS.View.User.Librarian
             Window librarianView = Application.Current.Windows.OfType<Window>().FirstOrDefault(w => w.Title == "Librarian");
             if (librarianView != null)
             {
-                Window gotoAddBook = new addBook();
+                Window gotoAddBook = new addBook(librarianView);
                 gotoAddBook.Show();
                 librarianView.Close();
             }
@@ -28,7 +28,7 @@ namespace LMS.View.User.Librarian
             Window librarianView = Application.Current.Windows.OfType<Window>().FirstOrDefault(w => w.Title == "Librarian");
             if (librarianView != null)
             {
-                Window gotoDeleteBook = new deleteBook();
+                Window gotoDeleteBook = new deleteBook(librarianView);
                 gotoDeleteBook.Show();
                 librarianView.Close();
             }

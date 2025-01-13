@@ -41,16 +41,18 @@
                         Margin="5">
                 <Label Content="Availability"/>
                 <TextBox x:Name="txtAvailability"
-             Width="100"/>
-            </StackPanel>
+                            Width="100"/>
+            </StackPanel>   
             <StackPanel Orientation="Vertical"
                         HorizontalAlignment="Center"
                         Margin="5">
                 <Button Content="Add Book"
                         Margin="5"
+                        Click="Add_Book_Button"
                         Width="60"/>
                 <Button Content="Back"
                         Margin="5"
+                        Click="Back_button"
                         Width="60"/>
             </StackPanel>
         </StackPanel>
