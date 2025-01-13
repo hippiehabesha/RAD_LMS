@@ -17,7 +17,6 @@ namespace LMS.View.Admin
         {
             Window adminView = Application.Current.Windows.OfType<Window>().FirstOrDefault(w => w.Title == "Admin");
             if (adminView != null)
-
             {
                 Window gotoSave = new saveUser();
                 gotoSave.Show();

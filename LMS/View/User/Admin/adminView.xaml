@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LMS.View.Admin"
         mc:Ignorable="d"
-        Title="Admin" Height="450" Width="800"
+        Title="Admin" 
+        Height="450" Width="800"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="400*"/>
             <ColumnDefinition Width="400*"/>
-            
         </Grid.ColumnDefinitions>
         <StackPanel HorizontalAlignment="Center"
                    VerticalAlignment="Center">
@@ -22,7 +22,7 @@
                        Height="70"
                        Width="100"/>
                 <Button Content="Book"
-                       
+                       Click="Book_Button_Click"
                        Margin="10"
                        Height="70"
                        Width="100"/>

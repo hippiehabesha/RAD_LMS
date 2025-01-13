@@ -1,5 +1,4 @@
-﻿using LMS.View.User.Librarian;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,21 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace LMS.View
+namespace LMS.View.Book
 {
     /// <summary>
-    /// Interaction logic for viewLibrarian.xaml
+    /// Interaction logic for addBook.xaml
     /// </summary>
-    public partial class viewLibrarian : Window
+    public partial class addBook : Window
     {
-        public viewLibrarian()
+        public addBook()
         {
             InitializeComponent();
-        }
-
-        private void Book_Button(object sender, RoutedEventArgs e)
-        {
-            frameHolder.Navigate(new librarianBookActions());
         }
     }
 }

@@ -5,8 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LMS.View"
         mc:Ignorable="d"
-        Title="viewLibrarian" Height="450" Width="800">
+        Title="Librarian" Height="450" Width="800">
     <Grid>
-		
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="400"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel VerticalAlignment="Center"
+              HorizontalAlignment="Center"
+              Grid.Column="0">
+            <StackPanel Orientation="Vertical">
+                <Button Content="Book"
+                  Width="100"
+                  Height="50"
+                  Click="Book_Button"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <Frame Name="frameHolder"
+             Height="430"
+             Width="400"/>
+        </StackPanel>
+
     </Grid>
 </Window>
