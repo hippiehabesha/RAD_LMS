@@ -29,5 +29,12 @@ namespace LMS.View
         {
             frameHolder.Navigate(new librarianBookActions());
         }
+
+        private void Logout_Button(object sender, RoutedEventArgs e)
+        {
+            Window logout = new userLogin();
+            logout.Show();
+            this.Close();
+        }
     }
 }

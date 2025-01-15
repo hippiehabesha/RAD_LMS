@@ -13,28 +13,39 @@
             <ColumnDefinition Width="400*"/>
             <ColumnDefinition Width="400*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel HorizontalAlignment="Center"
-                   VerticalAlignment="Center">
-            <StackPanel Orientation="Vertical">
-                <Button Content="User" 
-                       Click="User_Button_Click"
-                       Margin="10"
-                       Height="70"
-                       Width="100"/>
-                <Button Content="Book"
-                       Click="Book_Button_Click"
-                       Margin="10"
-                       Height="70"
-                       Width="100"/>
+        <DockPanel Grid.Column="0">
+            <StackPanel HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        DockPanel.Dock="Top"
+                        Margin="0 50">
+                <StackPanel Orientation="Vertical">
+                    <Button Content="User" 
+                            Click="User_Button_Click"
+                            Margin="10"
+                            Height="70"
+                            Width="100"/>
+                    <Button Content="Book"
+                            Click="Book_Button_Click"
+                            Margin="10"
+                            Height="70"
+                            Width="100"/>
+                </StackPanel>
             </StackPanel>
-        </StackPanel>
+            <Button Content="Logout"
+                    Click="Logout_Button"
+                    Margin="10"
+                    Height="30"
+                    Width="100"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Bottom"
+                    DockPanel.Dock="Bottom"/>
+        </DockPanel>
         <StackPanel HorizontalAlignment="Left"
-                   VerticalAlignment="Center"
-                   Grid.Column="1" 
-                    >
+                    VerticalAlignment="Center"
+                    Grid.Column="1">
             <Frame x:Name="frameHolder"
-                    Height="430" 
-                    Width="400"/>
+                   Height="430" 
+                   Width="400"/>
         </StackPanel>
     </Grid>
 </Window>

@@ -22,5 +22,12 @@ namespace LMS.View.Admin
         {
             frameHolder.Navigate(new adminBookActions());
         }
+
+        private void Logout_Button(object sender, RoutedEventArgs e)
+        {
+            Window logout = new userLogin();
+            logout.Show();
+            this.Close();
+        }
     }
 }
