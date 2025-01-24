@@ -8,7 +8,8 @@ namespace LMS.DataBase
 {
     internal class notificationConnection
     {
-        
+        private string queryUpdate = "UPDATE Notifications SET UserID = @UserId, Message = @Message WHERE NotificationID = @NotificationId";
+        private string querySearch = "SELECT UserID, Message FROM Notifications WHERE NotificationID = @NotificationId";
         private string queryCreate = "INSERT INTO Notifications (UserID, Message, IsRead) VALUES (@UserID, @Message, 0)";
         private string queryFetch = "SELECT NotificationID, Message, IsRead FROM Notifications WHERE UserID = @UserID ORDER BY IsRead ASC, NotificationID DESC";
         private string queryMarkAsRead = "UPDATE Notifications SET IsRead = 1 WHERE NotificationID = @NotificationID";
@@ -72,8 +73,63 @@ namespace LMS.DataBase
                 }
             }
         }
+        public notificationModel NotificationSearch(int notificationId)
+        {
 
-        // Delete a notification
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand cmd = new SqlCommand(querySearch, connection))
+                {
+                    cmd.Parameters.AddWithValue("@NotificationId", notificationId );
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new notificationModel
+                            {
+                                UserID = int.Parse(reader["UserID"].ToString()),
+                                Message = reader["Message"].ToString()
+
+                            };
+                        }
+                        else
+                        {
+                            MessageBox.Show("User not found.");
+                            return null;
+                        }
+                    }
+                }
+            }
+        }
+
+        public void UpdateNotification(notificationModel notification)
+        {
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand cmd = new SqlCommand(queryUpdate, connection))
+                {
+                    cmd.Parameters.AddWithValue("@UserId", notification.UserID);
+                    cmd.Parameters.AddWithValue("@Message", notification.Message);
+                    cmd.Parameters.AddWithValue("@NotificationId", notification.NotificationID);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Notification details updated successfully.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Notification not found.");
+                    }
+                }
+            }
+        }
+
         public void DeleteNotification(notificationModel delete)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))

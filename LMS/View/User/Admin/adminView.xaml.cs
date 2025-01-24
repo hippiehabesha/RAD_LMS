@@ -34,5 +34,10 @@ namespace LMS.View.Admin
         {
             frameHolder.Navigate(new adminLoanActions());
         }
+
+        private void Notification_Button_Click(object sender, RoutedEventArgs e)
+        {
+            frameHolder.Navigate(new adminNotificationActions());
+        }
     }
 }

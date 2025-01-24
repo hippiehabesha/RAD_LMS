@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:LMS.View.Admin"
         mc:Ignorable="d"
         Title="Admin" 
-        Height="450" Width="800"
+        Height="500" Width="800"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -22,17 +22,22 @@
                     <Button Content="User" 
                             Click="User_Button_Click"
                             Margin="10"
-                            Height="70"
+                            Height="50"
                             Width="100"/>
                     <Button Content="Book"
                             Click="Book_Button_Click"
                             Margin="10"
-                            Height="70"
+                            Height="50"
                             Width="100"/>
                     <Button Content="Loan"
                             Click="Loan_Button_Click"
                             Margin="10"
-                            Height="70"
+                            Height="50"
+                            Width="100"/>
+                    <Button Content="Notification"
+                            Click="Notification_Button_Click"
+                            Margin="10"
+                            Height="50"
                             Width="100"/>
                 </StackPanel>
             </StackPanel>

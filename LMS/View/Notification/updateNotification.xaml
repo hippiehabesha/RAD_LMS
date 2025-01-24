@@ -5,8 +5,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LMS.View.Notification"
         mc:Ignorable="d"
-        Title="updateNotificaion" Height="450" Width="800">
+        Title="updateNotification" 
+        Height="450" Width="600">
     <Grid>
-        
+        <StackPanel VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
+            <StackPanel Orientation='Horizontal'
+                        Margin="0 5">
+                <Label Content="Notification Id"/>
+                <TextBox Name="txtNotificationId" 
+                         Width="100" />
+                <Button Name="btnSearch" 
+                        Content="Search" 
+                        Click="Search_Button"
+                        Margin="5 0"/>
+            </StackPanel>
+            <StackPanel Orientation='Horizontal'
+                        Margin="0 5">
+                <Label Content="User Id"/>
+                <TextBox Name="txtUserId" 
+                         Width="100" />
+            </StackPanel>
+            <StackPanel Orientation='Horizontal'
+                        Margin="0 5">
+                <Label Content="message"/>
+                <TextBox Name="txtMessage"
+                         AllowDrop="True"
+                         Width="200"
+                         Height="50"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical"
+                        Margin="0 5">
+                <Button Content="Update" 
+                        Click="Update_Button"
+                        Margin="5 0"/>
+                <Button Content="Back"
+                        Click="Back_Button"
+                        Margin="5 0"/>
+            </StackPanel>
+
+        </StackPanel>
     </Grid>
 </Window>
