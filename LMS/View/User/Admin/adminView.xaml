@@ -29,6 +29,11 @@
                             Margin="10"
                             Height="70"
                             Width="100"/>
+                    <Button Content="Loan"
+                            Click="Loan_Button_Click"
+                            Margin="10"
+                            Height="70"
+                            Width="100"/>
                 </StackPanel>
             </StackPanel>
             <Button Content="Logout"

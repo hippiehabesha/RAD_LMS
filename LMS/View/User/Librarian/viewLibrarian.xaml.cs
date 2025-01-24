@@ -1,4 +1,5 @@
 ﻿using LMS.View.User.Librarian;
+using LMS.View.User.Member;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +36,11 @@ namespace LMS.View
             Window logout = new userLogin();
             logout.Show();
             this.Close();
+        }
+
+        private void Loan_Button_Click(object sender, RoutedEventArgs e)
+        {
+            frameHolder.Navigate(new librarianLoanActions());
         }
     }
 }

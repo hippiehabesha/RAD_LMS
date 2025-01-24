@@ -29,5 +29,10 @@ namespace LMS.View.Admin
             logout.Show();
             this.Close();
         }
+
+        private void Loan_Button_Click(object sender, RoutedEventArgs e)
+        {
+            frameHolder.Navigate(new adminLoanActions());
+        }
     }
 }

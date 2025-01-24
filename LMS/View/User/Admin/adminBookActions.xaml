@@ -15,9 +15,16 @@
             <Button Content="Add New Book"
                     Margin="5"
                     Click="Add_Book_Button"/>
-            <Button Content="Delete Existing Book"
+            <Button Content="Delete Book"
                     Margin="5"
                     Click="Delete_Book_Button"/>
+            <Button Content="Update Book"
+                    Margin="5"
+                    Click="Update_Book_Button"/>
+            <Button Content="View Book"
+                    Margin="5"
+                    Click="View_Book_Button"/>
+            
         </StackPanel>
 
     </Grid>

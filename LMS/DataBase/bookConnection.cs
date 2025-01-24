@@ -6,12 +6,13 @@ namespace LMS.DataBase
 {
     internal class bookConnection
     {
+        string queryDeleteLoans = "DELETE FROM dbo.Loans WHERE BookID = @BookID";
         private string queryCheck = "SELECT COUNT(1) FROM dbo.Books WHERE ISBN = @ISBN";
-        private string querySearch = "SELECT BookID, Title, Author, Genre, ISBN, Availability FROM Books WHERE BookID = @BookID";
+        private string querySearch = "SELECT BookID, Title, Author, Genre FROM Books WHERE BookID = @BookID";
         private string queryAvailabilityUpdate = "UPDATE Books SET Availability = Availability + @Change WHERE BookID = @BookID";
         private string queryView = "SELECT BookID, Title, Author, Genre, ISBN, Availability FROM Books";
         private string queryDelete = "DELETE FROM Books WHERE BookID = @BookID";
-        private string queryUpdate = "UPDATE Books SET Title = @NewTitle, Author = @NewAuthor, Genre = @NewGenre, Availability = @NewAvailability WHERE BookID = @BookID";
+        private string queryUpdate = "UPDATE Books SET Title = @NewTitle, Author = @NewAuthor, Genre = @NewGenre WHERE BookID = @BookID";
         private string queryAdd = "INSERT INTO Books (Title, Author, Genre, ISBN, Availability) VALUES (@Title, @Author, @Genre, @ISBN, @Availability)";
         private string connectionString = @"Data Source=DESKTOP-G1NBITB\SQLEXPRESS;Initial Catalog=LMS;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
 
@@ -21,7 +22,7 @@ namespace LMS.DataBase
             {
                 connection.Open();
 
-                // Check if the book already exists
+                
                 
                 using (SqlCommand checkCmd = new SqlCommand(queryCheck, connection))
                 {
@@ -34,7 +35,7 @@ namespace LMS.DataBase
                     }
                 }
 
-                // Insert the new book
+                
                 using (SqlCommand cmd = new SqlCommand(queryAdd, connection))
                 {
                     cmd.Parameters.AddWithValue("@Title", add.title);
@@ -61,7 +62,6 @@ namespace LMS.DataBase
                     cmd.Parameters.AddWithValue("@NewTitle", update.title);
                     cmd.Parameters.AddWithValue("@NewAuthor", update.author);
                     cmd.Parameters.AddWithValue("@NewGenre", update.genre);
-                    cmd.Parameters.AddWithValue("@NewAvailability", update.availability);
 
                     int rowsAffected = cmd.ExecuteNonQuery();
                     if (rowsAffected > 0)
@@ -80,6 +80,17 @@ namespace LMS.DataBase
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
+               
+                using (SqlCommand checkCmd = new SqlCommand(queryDeleteLoans, connection))
+                {
+                    checkCmd.Parameters.AddWithValue("@BookID", delete.bookID);
+                    int rowsAffected = checkCmd.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        
+                        return;
+                    }
+                }
 
                 using (SqlCommand cmd = new SqlCommand(queryDelete, connection))
                 {
@@ -149,9 +160,7 @@ namespace LMS.DataBase
                             {
                                 title = reader["Title"].ToString(),
                                 author = reader["Author"].ToString(),
-                                genre = reader["Genre"].ToString(),
-                                isbn = reader["ISBN"].ToString(),
-                                availability = int.TryParse(reader["Availability"].ToString(), out int availability) ? availability : 0
+                                genre = reader["Genre"].ToString()                                                             
                             };
                         }
                         else
@@ -162,6 +171,22 @@ namespace LMS.DataBase
                     }
                 }
             }
+        }
+        public DataTable SearchBook(string searchTerm)
+        {
+            DataTable dt = new DataTable();
+            string query = "SELECT * FROM dbo.Books WHERE Title LIKE @SearchTerm OR Author LIKE @SearchTerm OR Genre LIKE @SearchTerm OR ISBN LIKE @SearchTerm";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@SearchTerm", "%" + searchTerm + "%");
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
+                }
+            }
+            return dt;
         }
     }
 }

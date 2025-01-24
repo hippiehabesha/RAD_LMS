@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LMS.View.User.Librarian;
+using LMS.View.User.Member;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +24,23 @@ namespace LMS.View
         public viewMember()
         {
             InitializeComponent();
+        }
+
+        private void Book_Button(object sender, RoutedEventArgs e)
+        {
+            frameHolder.Navigate(new memberBookActions());
+        }
+
+        private void Logout_Button(object sender, RoutedEventArgs e)
+        {
+            Window logout = new userLogin();
+            logout.Show();
+            this.Close();
+        }
+
+        private void Loan_Button(object sender, RoutedEventArgs e)
+        {
+            frameHolder.Navigate(new memberLoanActions());
         }
     }
 }

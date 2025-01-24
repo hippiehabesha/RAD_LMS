@@ -24,10 +24,16 @@ namespace LMS.View.Admin
         public viewUser()
         {
             InitializeComponent();
-
-            view();
         }
-        private void view()
+
+        private void Back_Button(object sender, RoutedEventArgs e)
+        {
+            Window backToAdmin = new adminView();
+            backToAdmin.Show();
+            this.Close();
+        }
+
+        private void View_All_Button(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -39,11 +45,19 @@ namespace LMS.View.Admin
                 MessageBox.Show(ex.Message);
             }
         }
-        private void Back_click(object sender, RoutedEventArgs e)
+
+        private void Search_Button(object sender, RoutedEventArgs e)
         {
-            Window backToAdmin = new adminView();
-            backToAdmin.Show();
-            this.Close();
+            try
+            {
+                string searchTerm = txtSearch.Text; // Assuming you have a TextBox named txtSearch
+                DataTable dt = new UserConnection().SearchUserView(searchTerm);
+                dataGridView.ItemsSource = dt.DefaultView;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

@@ -1,0 +1,21 @@
+﻿<Page x:Class="LMS.View.User.Admin.adminLoanActions"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LMS.View.User.Admin"
+      mc:Ignorable="d" 
+     d:DesignHeight="430" d:DesignWidth="400"
+      Title="adminLoanActions"
+      Background="LightGray">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center"
+     VerticalAlignment="Center">
+            <Button Content="View Loans"
+                    Margin="5"
+                    Click="View_Loan_Button"/>
+            
+        </StackPanel>
+    </Grid>
+</Page>

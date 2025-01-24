@@ -232,6 +232,22 @@ namespace LMS.DataBase
             }
         }
 
+        public DataTable SearchUserView(string searchTerm)
+        {
+            DataTable dt = new DataTable();
+            string querySearchView = "SELECT UserID, Username, Role FROM Users WHERE Username LIKE @SearchTerm OR Role LIKE @SearchTerm";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(querySearchView, connection))
+                {
+                    cmd.Parameters.AddWithValue("@SearchTerm", "%" + searchTerm + "%");
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
+                }
+            }
+            return dt;
+        }
 
     }
 }

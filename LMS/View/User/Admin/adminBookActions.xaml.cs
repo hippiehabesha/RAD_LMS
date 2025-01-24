@@ -48,5 +48,27 @@ namespace LMS.View.User.Admin
                 adminView.Close();
             }
         }
+
+        private void Update_Book_Button(object sender, RoutedEventArgs e)
+        {
+            Window adminView = Application.Current.Windows.OfType<Window>().FirstOrDefault(w => w.Title == "Admin");
+            if (adminView != null)
+            {
+                Window gotoUpdateBook = new updateBook(adminView);
+                gotoUpdateBook.Show();
+                adminView.Close();
+            }
+        }
+
+        private void View_Book_Button(object sender, RoutedEventArgs e)
+        {
+            Window adminView = Application.Current.Windows.OfType<Window>().FirstOrDefault(w => w.Title == "Admin");
+            if (adminView != null)
+            {
+                Window gotoViewBook = new viewBook(adminView);
+                gotoViewBook.Show();
+                adminView.Close();
+            }
+        }
     }
 }

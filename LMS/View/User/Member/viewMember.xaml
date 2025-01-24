@@ -5,8 +5,49 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LMS.View"
         mc:Ignorable="d"
-        Title="viewMember" Height="450" Width="800">
+        Title="Member" 
+        Height="450" Width="800"
+        WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400*"/>
+            <ColumnDefinition Width="400*"/>
+        </Grid.ColumnDefinitions>
+        <DockPanel Grid.Column="0">
+            <StackPanel HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        DockPanel.Dock="Top"
+                        Margin="0 60">
+                <StackPanel Orientation="Vertical">
+                    <Button Content="Book" 
+                            Click="Book_Button"
+                            Margin="10"
+                            Height="70"
+                            Width="100"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <Button Content="Loan" 
+                            Click="Loan_Button"
+                            Margin="10"
+                            Height="70"
+                            Width="100"/>
+                </StackPanel>
+            </StackPanel>
+            <Button Content="Logout"
+                    Click="Logout_Button"
+                    Margin="10"
+                    Height="30"
+                    Width="100"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Bottom"
+                    DockPanel.Dock="Bottom"/>
+        </DockPanel>
+        <StackPanel HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Grid.Column="1">
+            <Frame x:Name="frameHolder"
+                   Height="430" 
+                   Width="400"/>
+        </StackPanel>
     </Grid>
 </Window>

@@ -1,46 +1,46 @@
-﻿<Window x:Class="LMS.View.Admin.viewUser"
+﻿<Window x:Class="LMS.View.Loan.viewOwnLoan"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:LMS.View.Admin"
+        xmlns:local="clr-namespace:LMS.View.Loan"
         mc:Ignorable="d"
-        Title="viewUser"
+        Title="viewOwnLoan"  
         Height="450" Width="600"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
-            <RowDefinition/>
+            <RowDefinition />
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0"
-                 HorizontalAlignment="Center"
-                 VerticalAlignment="Center">
+        <StackPanel Grid.Row="0" 
+             HorizontalAlignment="Center"
+             VerticalAlignment="Center">
             <StackPanel Orientation="Horizontal">
                 <Label Content="Search"/>
                 <TextBox x:Name="txtSearch"
-                      Width="150"
-                      Margin="5 0"/>
+                         Width="100"
+                         Margin="5 0"/>
                 <Button Content="Search"
-                     Click="Search_Button"
-                     Margin="5 0"/>
-                <Button Content="View All"
-                     Click="View_All_Button"
-                     Margin="5 0"/>
+                 Width="100"
+                 Click="Search_User_button"
+                        Margin="5 0"/>
             </StackPanel>
-
         </StackPanel>
+
         <StackPanel Grid.Row="1">
             <DataGrid Name="dataGridView" 
-                   AutoGenerateColumns="True"/>
+                      AutoGenerateColumns="True"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Auto"/>
         </StackPanel>
         <StackPanel Grid.Row="2" 
-             HorizontalAlignment="Center"
-             VerticalAlignment="Center">
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center">        
             <Button Content="Back"
-             Width="100"
-             Click="Back_Button"/>
+                     Width="100"
+                     Click="Back_button"/>
         </StackPanel>
     </Grid>
 </Window>

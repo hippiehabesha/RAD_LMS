@@ -33,5 +33,26 @@ namespace LMS.View.User.Librarian
                 librarianView.Close();
             }
         }
+        private void Update_Book_Button(object sender, RoutedEventArgs e)
+        {
+            Window librarianView = Application.Current.Windows.OfType<Window>().FirstOrDefault(w => w.Title == "Librarian");
+            if (librarianView != null)
+            {
+                Window gotoUpdateBook = new updateBook(librarianView);
+                gotoUpdateBook.Show();
+                librarianView.Close();
+            }
+        }
+
+        private void View_Book_Button(object sender, RoutedEventArgs e)
+        {
+            Window librarianView = Application.Current.Windows.OfType<Window>().FirstOrDefault(w => w.Title == "Librarian");
+            if (librarianView != null)
+            {
+                Window gotoViewBook = new viewBook(librarianView);
+                gotoViewBook.Show();
+                librarianView.Close();
+            }
+        }
     }
 }
