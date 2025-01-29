@@ -12,14 +12,15 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace LMS.View.Admin
+namespace LMS.View.User_Pages
 {
     /// <summary>
     /// Interaction logic for changeUserPassword.xaml
     /// </summary>
-    public partial class changeUserPassword : Window
+    public partial class changeUserPassword : Page
     {
         public changeUserPassword()
         {
@@ -38,15 +39,10 @@ namespace LMS.View.Admin
 
                 new UserConnection().changePassword(updateModel);
             }
-            else {
+            else
+            {
                 MessageBox.Show("The password does not match.");
             }
-        }
-        private void Back_Click(object sender, RoutedEventArgs e)
-        {
-            Window backToAdmin = new adminView();
-            backToAdmin.Show();
-            this.Close();
         }
     }
 }

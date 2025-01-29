@@ -1,17 +1,30 @@
 ﻿using LMS.DataBase;
 using LMS.Model;
-using LMS.View.Admin;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
-namespace LMS.View.Book
+namespace LMS.View.Book_Pages
 {
-    public partial class updateBook : Window
+    /// <summary>
+    /// Interaction logic for updateBook.xaml
+    /// </summary>
+    public partial class updateBook : Page
     {
-        private Window _previousWindow;
-        public updateBook(Window previousWindow)
+        public updateBook()
         {
             InitializeComponent();
-            _previousWindow = previousWindow;
         }
 
         private void Get_Book_Info_Button(object sender, RoutedEventArgs e)
@@ -39,23 +52,6 @@ namespace LMS.View.Book
             };
 
             new bookConnection().UpdateBook(bookModel);
-        }
-
-        private void Back_button(object sender, RoutedEventArgs e)
-        {
-            if (_previousWindow is adminView)
-            {
-                Window gotoAdminView = new adminView();
-                gotoAdminView.Show();
-                this.Close();
-            }
-
-            if (_previousWindow is viewLibrarian)
-            {
-                Window gotoViewLibrarian = new viewLibrarian();
-                gotoViewLibrarian.Show();
-                this.Close();
-            }
         }
     }
 }

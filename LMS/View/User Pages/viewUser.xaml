@@ -1,0 +1,42 @@
+﻿<Page x:Class="LMS.View.User_Pages.viewUser"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LMS.View.User_Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="600"
+      Title="viewUser">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Grid.Row="0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal"
+                    Margin="0,10,0,10">
+            <Label Content="Search:" VerticalAlignment="Center" Margin="5"/>
+            <TextBox x:Name="txtSearch"
+                     Width="200"
+                     Margin="5"/>
+            <Button Content="Search"
+                    Click="Search_Button"
+                    Margin="5"/>
+            <Button Content="View All"
+                    Click="View_All_Button"
+                    Margin="5"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Margin="10,0,10,0">
+            <DataGrid Name="dataGridView" 
+                      AutoGenerateColumns="True"
+                      Height="350"
+                      Margin="0,10,0,10"/>
+        </StackPanel>
+    </Grid>
+</Page>

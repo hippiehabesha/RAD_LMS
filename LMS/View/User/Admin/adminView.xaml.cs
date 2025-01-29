@@ -1,4 +1,5 @@
-﻿using LMS.View.User.Admin;
+﻿using LMS.View.Book_Pages;
+using LMS.View.User_Pages;
 using System.Windows;
 
 namespace LMS.View.Admin
@@ -7,21 +8,12 @@ namespace LMS.View.Admin
     /// Interaction logic for adminView.xaml
     /// </summary>
     public partial class adminView : Window
-    {
+    { 
         public adminView()
         {
             InitializeComponent();
         }
 
-        private void User_Button_Click(object sender, RoutedEventArgs e)
-        {
-            frameHolder.Navigate(new adminUserActions());
-        }
-
-        private void Book_Button_Click(object sender, RoutedEventArgs e)
-        {
-            frameHolder.Navigate(new adminBookActions());
-        }
 
         private void Logout_Button(object sender, RoutedEventArgs e)
         {
@@ -30,14 +22,49 @@ namespace LMS.View.Admin
             this.Close();
         }
 
-        private void Loan_Button_Click(object sender, RoutedEventArgs e)
+        private void AddUser_Click(object sender, RoutedEventArgs e)
         {
-            frameHolder.Navigate(new adminLoanActions());
+            frameHolder.Navigate(new addUser());
         }
 
-        private void Notification_Button_Click(object sender, RoutedEventArgs e)
+        private void UpdateUser_Click(object sender, RoutedEventArgs e)
         {
-            frameHolder.Navigate(new adminNotificationActions());
+            frameHolder.Navigate(new updateUser());
+        }
+
+        private void DeleteUser_Click(object sender, RoutedEventArgs e)
+        {
+            frameHolder.Navigate(new deleteUser());
+        }
+
+        private void ViewUser_Click(object sender, RoutedEventArgs e)
+        {
+            frameHolder.Navigate(new viewUser());
+        }
+
+        private void ChangeUserPassword_Click(object sender, RoutedEventArgs e)
+        {
+            frameHolder.Navigate(new changeUserPassword());
+        }
+
+        private void AddBook_Click(object sender, RoutedEventArgs e)
+        {
+            frameHolder.Navigate(new addBook());
+        }
+
+        private void UpdateBook_Click(object sender, RoutedEventArgs e)
+        {
+            frameHolder.Navigate(new updateBook());
+        }
+
+        private void DeleteBook_Click(object sender, RoutedEventArgs e)
+        {
+            frameHolder.Navigate(new deleteBook());
+        }
+
+        private void ViewBook_Click(object sender, RoutedEventArgs e)
+        {
+            frameHolder.Navigate(new viewBook());
         }
     }
 }

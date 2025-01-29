@@ -1,36 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using LMS.DataBase;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using LMS.DataBase;
 
-namespace LMS.View.Admin
+namespace LMS.View.User_Pages
 {
-    /// <summary>  
-    /// Interaction logic for viewUser.xaml  
-    /// </summary>  
-    public partial class viewUser : Window
+    /// <summary>
+    /// Interaction logic for viewUser.xaml
+    /// </summary>
+    public partial class viewUser : Page
     {
         public viewUser()
         {
             InitializeComponent();
-        }
-
-        private void Back_Button(object sender, RoutedEventArgs e)
-        {
-            Window backToAdmin = new adminView();
-            backToAdmin.Show();
-            this.Close();
         }
 
         private void View_All_Button(object sender, RoutedEventArgs e)

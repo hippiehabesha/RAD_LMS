@@ -1,23 +1,19 @@
 ﻿using LMS.DataBase;
 using LMS.Model;
 using System.Windows;
+using System.Windows.Controls;
 
-namespace LMS.View.Admin
+namespace LMS.View.User_Pages
 {
-    /// <summary>
-    /// Interaction logic for saveUser.xaml
-    /// </summary>
-    public partial class saveUser : Window
+    public partial class addUser : Page
     {
-        public saveUser()
+        public addUser()
         {
             InitializeComponent();
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-
-
             userSaveModel save = new userSaveModel
             {
                 username = txtUsername.Text,
@@ -26,14 +22,6 @@ namespace LMS.View.Admin
             };
 
             new UserConnection().saveUser(save);
-
-        }
-
-        private void Back_Click(object sender, RoutedEventArgs e)
-        {
-            Window backToAdmin = new adminView();
-            backToAdmin.Show();
-            this.Close();
         }
     }
 }

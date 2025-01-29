@@ -1,8 +1,8 @@
 ﻿using LMS.DataBase;
 using LMS.Model;
-using LMS.View.Admin;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,23 +13,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace LMS.View.Book
+namespace LMS.View.Book_Pages
 {
     /// <summary>
     /// Interaction logic for deleteBook.xaml
     /// </summary>
-    public partial class deleteBook : Window
+    public partial class deleteBook : Page
     {
-        private Window _previousWindow;
-        public deleteBook(Window previousWindow)
+        public deleteBook()
         {
             InitializeComponent();
-            _previousWindow = previousWindow;
+            view();
         }
 
-        private void Delete_Book_Button(object sender, RoutedEventArgs e)
+        private void Delete_Click(object sender, RoutedEventArgs e)
         {
             bookModel bookModel = new bookModel
             {
@@ -38,22 +38,17 @@ namespace LMS.View.Book
 
             new bookConnection().DeleteBook(bookModel);
         }
-        private void Back_button(object sender, RoutedEventArgs e)
+        private void view() 
         {
-            if (_previousWindow is adminView)
+            try
             {
-                Window gotoAdminView = new adminView();
-                gotoAdminView.Show();
-                this.Close();
+                DataTable dt = new bookConnection().ViewBook();
+                dataGridView.ItemsSource = dt.DefaultView;
             }
-
-            if (_previousWindow is viewLibrarian)
+            catch (Exception ex)
             {
-                Window gotoViewLibrarian = new viewLibrarian();
-                gotoViewLibrarian.Show();
-                this.Close();
+                MessageBox.Show(ex.Message);
             }
-
         }
     }
 }
