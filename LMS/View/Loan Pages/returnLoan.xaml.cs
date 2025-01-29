@@ -1,29 +1,30 @@
 ﻿using LMS.DataBase;
 using LMS.Model;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
-namespace LMS.View.Loan
+namespace LMS.View.Loan_Pages
 {
     /// <summary>
     /// Interaction logic for returnLoan.xaml
     /// </summary>
-    public partial class returnLoan : Window
+    public partial class returnLoan : Page
     {
-        private Window _previousWindow;
-        public returnLoan(Window previousWindow)
+        public returnLoan()
         {
             InitializeComponent();
-            _previousWindow = previousWindow;
-        }
-        private void Back_Button(object sender, RoutedEventArgs e)
-        {
-            if (_previousWindow is viewLibrarian)
-            {
-                Window gotoViewLibrarian = new viewLibrarian();
-                gotoViewLibrarian.Show();
-                this.Close();
-            }
-
         }
 
         private void ReturnBook_Button(object sender, RoutedEventArgs e)
@@ -34,7 +35,7 @@ namespace LMS.View.Loan
                 DateTime dueDate = dpDueDate.SelectedDate.Value;
                 DateTime returnDate = dpReturnDate.SelectedDate.Value;
                 int BookID = int.Parse(txtBookID.Text);
-               
+
 
                 LoanModel loan = new LoanModel
                 {
@@ -42,12 +43,12 @@ namespace LMS.View.Loan
                     ReturnDate = returnDate,
                     DueDate = dueDate,
                     BookID = BookID
-                   
+
 
                 };
 
                 new LoanConnection().ReturnBook(loan);
-                
+
             }
             catch (Exception ex)
             {

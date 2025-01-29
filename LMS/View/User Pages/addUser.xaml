@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:LMS.View.User_Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="600"
+      d:DesignHeight="450" d:DesignWidth="650"
       Title="Add User">
 
     <Grid>
@@ -20,7 +20,7 @@
 
         <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="Add New User" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="10"/>
 
-        <GroupBox Grid.Row="1" Grid.Column="0" Header="User Details" Margin="10">
+        <GroupBox Grid.Row="1" Grid.Column="0" BorderThickness="1" BorderBrush="Black" Header="User Details" Margin="10">
             <StackPanel Margin="10">
                 <StackPanel Orientation="Horizontal" Margin="5">
                     <Label Content="Username:" Width="100"/>

@@ -1,18 +1,6 @@
-﻿using LMS.View.User.Librarian;
-using LMS.View.User.Member;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LMS.View.Book_Pages;
+using LMS.View.Loan_Pages;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace LMS.View
 {
@@ -26,9 +14,39 @@ namespace LMS.View
             InitializeComponent();
         }
 
-        private void Book_Button(object sender, RoutedEventArgs e)
+        private void AddBook_Click(object sender, RoutedEventArgs e)
         {
-            frameHolder.Navigate(new librarianBookActions());
+            frameHolder.Navigate(new addBook());
+        }
+
+        private void UpdateBook_Click(object sender, RoutedEventArgs e)
+        {
+            frameHolder.Navigate(new updateBook());
+        }
+
+        private void DeleteBook_Click(object sender, RoutedEventArgs e)
+        {
+            frameHolder.Navigate(new deleteBook());
+        }
+
+        private void ViewBook_Click(object sender, RoutedEventArgs e)
+        {
+            frameHolder.Navigate(new viewBook());
+        }
+
+        private void ViewLoans_Click(object sender, RoutedEventArgs e)
+        {
+            frameHolder.Navigate(new viewLoan());
+        }
+
+        private void IssueLoans_Click(object sender, RoutedEventArgs e)
+        {
+            frameHolder.Navigate(new issueLoan());
+        }
+
+        private void ReturnLoans_Click(object sender, RoutedEventArgs e)
+        {
+            frameHolder.Navigate(new returnLoan());
         }
 
         private void Logout_Button(object sender, RoutedEventArgs e)
@@ -36,11 +54,6 @@ namespace LMS.View
             Window logout = new userLogin();
             logout.Show();
             this.Close();
-        }
-
-        private void Loan_Button_Click(object sender, RoutedEventArgs e)
-        {
-            frameHolder.Navigate(new librarianLoanActions());
         }
     }
 }

@@ -2,7 +2,6 @@
 using LMS.Model;
 using System.Data;
 using System.Windows;
-using LMS.View.Notification;
 
 namespace LMS.DataBase
 {

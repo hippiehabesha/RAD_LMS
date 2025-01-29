@@ -9,11 +9,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.2" />
+    <Compile Remove="View\Book\**" />
+    <EmbeddedResource Remove="View\Book\**" />
+    <None Remove="View\Book\**" />
+    <Page Remove="View\Book\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="View\Book\" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.2" />
   </ItemGroup>
 
 </Project>

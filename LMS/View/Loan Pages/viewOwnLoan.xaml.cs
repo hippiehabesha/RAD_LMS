@@ -1,34 +1,34 @@
 ﻿using LMS.DataBase;
+using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
-namespace LMS.View.Loan
+namespace LMS.View.Loan_Pages
 {
     /// <summary>
     /// Interaction logic for viewOwnLoan.xaml
     /// </summary>
-    public partial class viewOwnLoan : Window
+    public partial class viewOwnLoan : Page
     {
-        private Window _previousWindow;
-        public viewOwnLoan(Window previousWindow)
+        public viewOwnLoan()
         {
             InitializeComponent();
-            _previousWindow = previousWindow;
-        }
-
-        private void Back_button(object sender, RoutedEventArgs e)
-        {
-            if (_previousWindow is viewMember)
-            {
-                Window gotoViewMember = new viewMember();
-                gotoViewMember.Show();
-                this.Close();
-            }
         }
 
         private void Search_User_button(object sender, RoutedEventArgs e)
         {
-
             try
             {
                 int userID = int.Parse(txtSearch.Text);
@@ -39,7 +39,6 @@ namespace LMS.View.Loan
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
     }
 }

@@ -1,0 +1,46 @@
+﻿<Page x:Class="LMS.View.Notification_Pages.updateNotification"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LMS.View.Notification_Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Update Notification">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="Update Notification" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="10"/>
+
+        <GroupBox Grid.Row="1" Grid.Column="0" Header="Notification Details" Margin="10">
+            <StackPanel Margin="10">
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <Label Content="Notification ID:" Width="120"/>
+                    <TextBox Name="txtNotificationId" Width="200"/>
+                    <Button Name="btnSearch" Content="Search" Click="Search_Button" Margin="5 0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <Label Content="User ID:" Width="120"/>
+                    <TextBox Name="txtUserId" Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <Label Content="Message:" Width="120"/>
+                    <TextBox Name="txtMessage" Width="200" Height="100" TextWrapping="Wrap" AcceptsReturn="True"/>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Content="Update" Click="Update_Button" Width="100" Height="30" Margin="10"/>
+            <Button Content="Search" Click="Search_Button" Width="100" Height="30" Margin="10"/>
+        </StackPanel>
+    </Grid>
+</Page>

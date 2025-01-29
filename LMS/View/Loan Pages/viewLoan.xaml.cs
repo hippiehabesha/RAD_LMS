@@ -1,37 +1,32 @@
 ﻿using LMS.DataBase;
-using LMS.View.Admin;
+using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
-namespace LMS.View.Loan
+namespace LMS.View.Loan_Pages
 {
     /// <summary>
     /// Interaction logic for viewLoan.xaml
     /// </summary>
-    public partial class viewLoan : Window
+    public partial class viewLoan : Page
     {
-        private Window _previousWindow;
-        public viewLoan(Window previousWindow)
+        public viewLoan()
         {
             InitializeComponent();
-            _previousWindow = previousWindow;
         }
-        private void Back_button(object sender, RoutedEventArgs e)
-        {
-            if (_previousWindow is adminView)
-            {
-                Window gotoAdminView = new adminView();
-                gotoAdminView.Show();
-                this.Close();
-            }
 
-            if (_previousWindow is viewLibrarian)
-            {
-                Window gotoViewLibrarian = new viewLibrarian();
-                gotoViewLibrarian.Show();
-                this.Close();
-            }
-        }
         private void Search_Button(object sender, RoutedEventArgs e)
         {
             try

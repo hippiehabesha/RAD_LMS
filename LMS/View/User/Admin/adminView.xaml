@@ -38,14 +38,14 @@
                 <Expander Header="Loan" Margin="10">
                     <StackPanel>
                         <Button Content="View Loans" Click="ViewLoans_Click" Margin="5"/>
-                        <Button Content="Issue Loan" Click="IssueLoan_Click" Margin="5"/>
-                        <Button Content="Return Loan" Click="ReturnLoan_Click" Margin="5"/>
                     </StackPanel>
                 </Expander>
                 <Expander Header="Notification" Margin="10">
                     <StackPanel>
                         <Button Content="Send Notification" Click="SendNotification_Click" Margin="5"/>
                         <Button Content="View Notifications" Click="ViewNotifications_Click" Margin="5"/>
+                        <Button Content="Update Notification" Click="UpdateNotification_Click" Margin="5"/>
+                        <Button Content="Delete Notification" Click="deleteNotification_Click" Margin="5"/>
                     </StackPanel>
                 </Expander>
             </StackPanel>

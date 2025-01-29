@@ -6,30 +6,33 @@
         xmlns:local="clr-namespace:LMS.View"
         mc:Ignorable="d"
         Title="Librarian" 
-        Height="450" Width="800"
+        Height="500" Width="800"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="400*"/>
-            <ColumnDefinition Width="400*"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <DockPanel Grid.Column="0">
-            <StackPanel HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+        <DockPanel Grid.Column="0" Background="LightGray">
+            <StackPanel HorizontalAlignment="Stretch"
+                        VerticalAlignment="Top"
                         DockPanel.Dock="Top"
-                        Margin="0 60">
-                <StackPanel Orientation="Vertical">
-                    <Button Content="Book" 
-                            Click="Book_Button"
-                            Margin="10"
-                            Height="70"
-                            Width="100"/>
-                    <Button Content="Loan"
-                            Click="Loan_Button_Click"
-                            Margin="10"
-                            Height="70"
-                            Width="100"/>
-                </StackPanel>
+                        Margin="10">
+                <Expander Header="Book" Margin="10">
+                    <StackPanel>
+                        <Button Content="Add New Book" Click="AddBook_Click" Margin="5"/>
+                        <Button Content="Update Book" Click="UpdateBook_Click" Margin="5"/>
+                        <Button Content="Delete Book" Click="DeleteBook_Click" Margin="5"/>
+                        <Button Content="View Book" Click="ViewBook_Click" Margin="5"/>
+                    </StackPanel>
+                </Expander>
+                <Expander Header="Loan" Margin="10">
+                    <StackPanel>
+                        <Button Content="View Loans" Click="ViewLoans_Click" Margin="5"/>
+                        <Button Content="Issue Book" Click="IssueLoans_Click" Margin="5"/>
+                        <Button Content="Return Book" Click="ReturnLoans_Click" Margin="5"/>
+                    </StackPanel>
+                </Expander>
             </StackPanel>
             <Button Content="Logout"
                     Click="Logout_Button"
@@ -40,12 +43,13 @@
                     VerticalAlignment="Bottom"
                     DockPanel.Dock="Bottom"/>
         </DockPanel>
-        <StackPanel HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
+        <StackPanel HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
                     Grid.Column="1">
             <Frame x:Name="frameHolder"
-                   Height="430" 
-                   Width="400"/>
+                   NavigationUIVisibility="Hidden"
+                   HorizontalAlignment="Stretch"
+                   VerticalAlignment="Stretch"/>
         </StackPanel>
     </Grid>
 </Window>

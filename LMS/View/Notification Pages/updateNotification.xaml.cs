@@ -1,6 +1,5 @@
 ﻿using LMS.DataBase;
 using LMS.Model;
-using LMS.View.Admin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,20 +12,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace LMS.View.Notification
+namespace LMS.View.Notification_Pages
 {
     /// <summary>
     /// Interaction logic for updateNotification.xaml
     /// </summary>
-    public partial class updateNotification : Window
+    public partial class updateNotification : Page
     {
-        private Window _previousWindow;
-        public updateNotification(Window previousWindow)
+        public updateNotification()
         {
             InitializeComponent();
-            _previousWindow = previousWindow;
         }
 
         private void Search_Button(object sender, RoutedEventArgs e)
@@ -53,16 +51,6 @@ namespace LMS.View.Notification
             };
 
             new notificationConnection().UpdateNotification(notification);
-        }
-
-        private void Back_Button(object sender, RoutedEventArgs e)
-        {
-            if (_previousWindow is adminView)
-            {
-                Window gotoAdminView = new adminView();
-                gotoAdminView.Show();
-                this.Close();
-            }
         }
     }
 }
