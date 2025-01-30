@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:LMS.View"
         mc:Ignorable="d"
         Title="Librarian" 
-        Height="500" Width="800"
+        Height="700" Width="1100"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -18,7 +18,7 @@
                         VerticalAlignment="Top"
                         DockPanel.Dock="Top"
                         Margin="10">
-                <Expander Header="Book" Margin="10">
+                <Expander Header="Book" Margin="10" Expanded="Expander_Expanded">
                     <StackPanel>
                         <Button Content="Add New Book" Click="AddBook_Click" Margin="5"/>
                         <Button Content="Update Book" Click="UpdateBook_Click" Margin="5"/>
@@ -26,11 +26,17 @@
                         <Button Content="View Book" Click="ViewBook_Click" Margin="5"/>
                     </StackPanel>
                 </Expander>
-                <Expander Header="Loan" Margin="10">
+                <Expander Header="Loan" Margin="10" Expanded="Expander_Expanded">
                     <StackPanel>
                         <Button Content="View Loans" Click="ViewLoans_Click" Margin="5"/>
                         <Button Content="Issue Book" Click="IssueLoans_Click" Margin="5"/>
                         <Button Content="Return Book" Click="ReturnLoans_Click" Margin="5"/>
+                    </StackPanel>
+                </Expander>
+                <Expander Header="Notification" Margin="10" Expanded="Expander_Expanded">
+                    <StackPanel>
+                        <Button Content="Send Notification" Click="SendNotification_Click" Margin="5"/>
+                        <Button Content="View Notifications" Click="ViewNotifications_Click" Margin="5"/>
                     </StackPanel>
                 </Expander>
             </StackPanel>

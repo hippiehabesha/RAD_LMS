@@ -27,17 +27,21 @@ namespace LMS.View.Notification_Pages
                 };
 
                 new notificationConnection().DeleteNotification(notificationModel);
+
+                view();
+                clearText();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+            
         }
         private void view() 
         {
             try
             {
-                DataTable dt = new bookConnection().ViewBook();
+                DataTable dt =new notificationConnection().FetchAllNotifications();
                 dataGridView.ItemsSource = dt.DefaultView;
             }
             catch (Exception ex)
@@ -45,5 +49,11 @@ namespace LMS.View.Notification_Pages
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void clearText() 
+        {
+            txtNotificationID.Text = "";
+        }
+
     }
 }

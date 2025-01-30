@@ -37,6 +37,7 @@ namespace LMS.View.Book_Pages
             };
 
             new bookConnection().DeleteBook(bookModel);
+            view();
         }
         private void view() 
         {

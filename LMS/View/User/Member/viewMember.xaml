@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:LMS.View"
         mc:Ignorable="d"
         Title="Member" 
-        Height="500" Width="800"
+        Height="700" Width="1100"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -18,17 +18,17 @@
                         VerticalAlignment="Top"
                         DockPanel.Dock="Top"
                         Margin="10">
-                <Expander Header="Book" Margin="10">
+                <Expander Header="Book" Margin="10" Expanded="Expander_Expanded">
                     <StackPanel>
                         <Button Content="View Book" Click="ViewBook_Click" Margin="5"/>
                     </StackPanel>
                 </Expander>
-                <Expander Header="Loan" Margin="10">
+                <Expander Header="Loan" Margin="10" Expanded="Expander_Expanded">
                     <StackPanel>
                         <Button Content="View Loans" Click="ViewLoans_Click" Margin="5"/>
                     </StackPanel>
                 </Expander>
-                <Expander Header="Notification" Margin="10">
+                <Expander Header="Notification" Margin="10" Expanded="Expander_Expanded">
                     <StackPanel>
                         <Button Content="View Notificaion" Click="ViewNotification_Click" Margin="5"/>
                     </StackPanel>

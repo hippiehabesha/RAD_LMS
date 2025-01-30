@@ -9,8 +9,10 @@ namespace LMS.DataBase
         string queryDeleteLoans = "DELETE FROM dbo.Loans WHERE BookID = @BookID";
         private string queryCheck = "SELECT COUNT(1) FROM dbo.Books WHERE ISBN = @ISBN";
         private string querySearch = "SELECT BookID, Title, Author, Genre FROM Books WHERE BookID = @BookID";
+        private string querySearchMember = "SELECT BookID, Title, Author, Genre FROM Books WHERE BookID = @BookID";
         private string queryAvailabilityUpdate = "UPDATE Books SET Availability = Availability + @Change WHERE BookID = @BookID";
         private string queryView = "SELECT BookID, Title, Author, Genre, ISBN, Availability FROM Books";
+        private string queryViewMember = "SELECT BookID, Title, Author, Genre FROM Books";
         private string queryDelete = "DELETE FROM Books WHERE BookID = @BookID";
         private string queryUpdate = "UPDATE Books SET Title = @NewTitle, Author = @NewAuthor, Genre = @NewGenre WHERE BookID = @BookID";
         private string queryAdd = "INSERT INTO Books (Title, Author, Genre, ISBN, Availability) VALUES (@Title, @Author, @Genre, @ISBN, @Availability)";
@@ -126,6 +128,26 @@ namespace LMS.DataBase
 
             }
         }
+
+        public DataTable ViewBookMember()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand cmd = new SqlCommand(queryViewMember, connection))
+                {
+                    cmd.ExecuteNonQuery();
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
+                    DataTable dataTable = new DataTable("Books");
+                    dataAdapter.Fill(dataTable);
+                    return dataTable;
+
+                }
+
+            }
+        }
+
         public void UpdateBookAvailability(bookModel availabilityUpdate)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -142,6 +164,7 @@ namespace LMS.DataBase
                 }
             }
         }
+        
         public bookModel BookSearch(int bookID)
         {
 
@@ -173,6 +196,23 @@ namespace LMS.DataBase
             }
         }
         public DataTable SearchBook(string searchTerm)
+        {
+            DataTable dt = new DataTable();
+            string query = "SELECT * FROM dbo.Books WHERE Title LIKE @SearchTerm OR Author LIKE @SearchTerm OR Genre LIKE @SearchTerm OR ISBN LIKE @SearchTerm";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@SearchTerm", "%" + searchTerm + "%");
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
+                }
+            }
+            return dt;
+        }
+
+        public DataTable SearchBookMember(string searchTerm)
         {
             DataTable dt = new DataTable();
             string query = "SELECT * FROM dbo.Books WHERE Title LIKE @SearchTerm OR Author LIKE @SearchTerm OR Genre LIKE @SearchTerm OR ISBN LIKE @SearchTerm";

@@ -16,35 +16,24 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace LMS.View.User_Pages
+namespace LMS.View.Notification_Pages
 {
     /// <summary>
-    /// Interaction logic for deleteUser.xaml
+    /// Interaction logic for viewAllNotification.xaml
     /// </summary>
-    public partial class deleteUser : Page
+    public partial class viewAllNotification : Page
     {
-        public deleteUser()
+        public viewAllNotification()
         {
             InitializeComponent();
             view();
         }
 
-        private void Delete_Click(object sender, RoutedEventArgs e)
-        {
-            userSaveModel save = new userSaveModel
-            {
-                username = txtUserId.Text
-            };
-           
-            new UserConnection().deleteUser(save);
-            view();
-        }
-
-        private void view() 
+        public void view() 
         {
             try
             {
-                DataTable dt = new UserConnection().userView();
+                DataTable dt = new notificationConnection().FetchAllNotifications();
                 dataGridView.ItemsSource = dt.DefaultView;
             }
             catch (Exception ex)

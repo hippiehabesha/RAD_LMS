@@ -16,13 +16,13 @@ namespace LMS.View
         }
         protected void Register_Click(object sender, RoutedEventArgs e)
         {
-            if (txtUsername.Text != string.Empty || txtPassword.Password != string.Empty || cmbRole.Text != string.Empty)
+            if (txtUsername.Text != string.Empty || txtPassword.Password != string.Empty )
             {
                 userModel user = new userModel
                 {
                     username = txtUsername.Text,
                     password = txtPassword.Password,
-                    role = cmbRole.Text
+                    role = "Member"
                 };
 
                 if (txtPassword.Password == txtConfirmPassword.Password)
@@ -30,6 +30,7 @@ namespace LMS.View
                     new UserConnection().registerUser(user);
                     Window login = new userLogin();
                     login.Show();
+                    this.Close();
                 }
                 else
                 {

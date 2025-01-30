@@ -1,5 +1,4 @@
 ﻿using LMS.DataBase;
-using LMS.Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -16,35 +15,37 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace LMS.View.User_Pages
+namespace LMS.View.Book_Pages
 {
     /// <summary>
-    /// Interaction logic for deleteUser.xaml
+    /// Interaction logic for viewBookMember.xaml
     /// </summary>
-    public partial class deleteUser : Page
+    public partial class viewBookMember : Page
     {
-        public deleteUser()
+        public viewBookMember()
         {
             InitializeComponent();
-            view();
         }
 
-        private void Delete_Click(object sender, RoutedEventArgs e)
-        {
-            userSaveModel save = new userSaveModel
-            {
-                username = txtUserId.Text
-            };
-           
-            new UserConnection().deleteUser(save);
-            view();
-        }
-
-        private void view() 
+        private void Search_Button(object sender, RoutedEventArgs e)
         {
             try
             {
-                DataTable dt = new UserConnection().userView();
+                string searchTerm = txtSearch.Text;
+                DataTable dt = new bookConnection().SearchBookMember(searchTerm);
+                dataGridView.ItemsSource = dt.DefaultView;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void View_All_Button(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                DataTable dt = new bookConnection().ViewBookMember();
                 dataGridView.ItemsSource = dt.DefaultView;
             }
             catch (Exception ex)

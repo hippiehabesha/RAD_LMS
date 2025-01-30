@@ -1,0 +1,26 @@
+﻿<Page x:Class="LMS.View.Book_Pages.viewBookMember"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LMS.View.Book_Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="viewBookMember">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10">
+            <Label Content="Search" VerticalAlignment="Center" Margin="5"/>
+            <TextBox x:Name="txtSearch" Width="200" Margin="5"/>
+            <Button Content="Search" Click="Search_Button" Margin="5"/>
+            <Button Content="View All" Click="View_All_Button" Margin="5"/>
+        </StackPanel>
+
+        <DataGrid Name="dataGridView" Grid.Row="1" AutoGenerateColumns="True" Margin="0,10"/>
+    </Grid>
+</Page>

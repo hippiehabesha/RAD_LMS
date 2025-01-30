@@ -18,6 +18,7 @@
             <Label Content="User ID:" VerticalAlignment="Center" Margin="5"/>
             <TextBox x:Name="txtUserId" Width="200" Margin="5"/>
             <Button Content="View" Click="View_Button" Width="100" Margin="5"/>
+            <Button Content="Read" Click="Read_Button" Width="100" Margin="5"/>
         </StackPanel>
 
         <DataGrid Grid.Row="1" Name="dataGridView" AutoGenerateColumns="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Margin="10"/>

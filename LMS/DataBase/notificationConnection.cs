@@ -11,6 +11,7 @@ namespace LMS.DataBase
         private string querySearch = "SELECT UserID, Message FROM Notifications WHERE NotificationID = @NotificationId";
         private string queryCreate = "INSERT INTO Notifications (UserID, Message, IsRead) VALUES (@UserID, @Message, 0)";
         private string queryFetch = "SELECT NotificationID, Message, IsRead FROM Notifications WHERE UserID = @UserID ORDER BY IsRead ASC, NotificationID DESC";
+        private string queryFetchAll = "SELECT NotificationID, Message, IsRead FROM Notifications";
         private string queryMarkAsRead = "UPDATE Notifications SET IsRead = 1 WHERE NotificationID = @NotificationID";
         private string queryDelete = "DELETE FROM Notifications WHERE NotificationID = @NotificationID";
         private string connectionString = @"Data Source=DESKTOP-G1NBITB\SQLEXPRESS;Initial Catalog=LMS;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
@@ -42,6 +43,22 @@ namespace LMS.DataBase
                 using (SqlCommand cmd = new SqlCommand(queryFetch, connection))
                 {
                     cmd.Parameters.AddWithValue("@UserID", view.UserID);
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
+                    DataTable dataTable = new DataTable("Notifications");
+                    dataAdapter.Fill(dataTable);
+                    return dataTable;
+                }
+            }
+        }
+
+        public DataTable FetchAllNotifications()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand cmd = new SqlCommand(queryFetchAll, connection))
+                {
                     SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
                     DataTable dataTable = new DataTable("Notifications");
                     dataAdapter.Fill(dataTable);

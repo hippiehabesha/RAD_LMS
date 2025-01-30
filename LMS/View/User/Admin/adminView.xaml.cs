@@ -3,6 +3,7 @@ using LMS.View.User_Pages;
 using LMS.View.Loan_Pages;
 using LMS.View.Notification_Pages;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace LMS.View.Admin
 {
@@ -16,6 +17,16 @@ namespace LMS.View.Admin
             InitializeComponent();
         }
 
+        private void Expander_Expanded(object sender, RoutedEventArgs e)
+        {
+            foreach (var child in ((StackPanel)((Expander)sender).Parent).Children)
+            {
+                if (child is Expander expander && expander != sender)
+                {
+                    expander.IsExpanded = false;
+                }
+            }
+        }
 
         private void Logout_Button(object sender, RoutedEventArgs e)
         {
@@ -81,7 +92,7 @@ namespace LMS.View.Admin
 
         private void ViewNotifications_Click(object sender, RoutedEventArgs e)
         {
-            frameHolder.Navigate(new viewNotification());
+            frameHolder.Navigate(new viewAllNotification());
         }
 
         private void UpdateNotification_Click(object sender, RoutedEventArgs e)

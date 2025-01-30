@@ -14,7 +14,7 @@ namespace LMS.DataBase
         private string queryUpdate = "UPDATE Users SET Username = @Username , Role = @Role WHERE UserID = @UserID";
         private string querySave = "INSERT INTO Users(Username, PasswordHash, Role) Values(@userName, @passwordHash, @role)";
         private string queryView = "SELECT UserID, Username, Role FROM Users";
-        private string queryUniqueness = "SELECT COUNT(*) FROM Users WHERE Username = @Username";
+        private string queryUniqueness = "SELECT * FROM Users WHERE Username = @Username";
         private string queryRole = "SELECT Role FROM Users WHERE Username = @userName AND PasswordHash = @passwordHash";
         private string queryRegister = "INSERT INTO Users(Username, PasswordHash, Role) Values(@userName, @passwordHash, @role)";
         private string queryDelete = "DELETE FROM Users WHERE Username = @Username";
